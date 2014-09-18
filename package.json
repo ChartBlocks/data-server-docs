@@ -1,0 +1,28 @@
+{
+  "name": "chartblocks-data-server-docs",
+  "version": "0.1.0",
+  "description": "REST API docs",
+  "author": "Arron Woods <aw@chartblocks.com>",
+  "preferGlobal": true,
+  "homepage": "http://chartblocks.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChartBlocks/data-server-docs.git"
+  },
+  "license": {
+    "type": "PROPRIETARY",
+    "url": "https://github.com/ChartBlocks/data-server-docs/blob/master/LICENSE.md"
+  },
+  "keywords": [
+    "chartblocks",
+    "api",
+    "documentation",
+    "rest",
+    "restful"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "apidoc": "~0.7.2"
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "name": "chartblocks/data-server-docs",
+    "description": "ChartBlocks REST API documentation",
+    "homepage": "http://www.chartblocks.com",
+    "license": "proprietary",
+    "require": {
+        "chartblocks/data-server": "dev-develop"
+    },
+    "minimum-stability": "dev",
+    "repositories": [
+	{
+	    "type": "composer",
+	    "url": "http://packages.chblk.com"
+	},
+        {
+            "type": "composer",
+            "url": "http://packages.copiadigital.co.uk"
+        }
+    ]
+}
