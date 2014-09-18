@@ -7,7 +7,7 @@ Install
 -------
 
 ```cli
-npm install
+npm install apidoc -g
 composer install
 ```
 
