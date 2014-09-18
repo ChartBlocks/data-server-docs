@@ -35,9 +35,133 @@
     "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
   },
   {
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart",
+            "optional": false,
+            "description": "<p>The chart object.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "chart.name",
+            "optional": false,
+            "description": "<p>The chart reference</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "field": "chart.tags",
+            "optional": false,
+            "description": "<p>Tags</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart.config",
+            "optional": false,
+            "description": "<p>Config (see Chart Config docs)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "field": "chart.isPublic",
+            "optional": false,
+            "description": "<p>Is chart in public gallery</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "field": "chart.totalViews",
+            "optional": false,
+            "description": "<p>Running total number of views</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "field": "chart.createdAt",
+            "optional": false,
+            "description": "<p>Created date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "field": "chart.updatedAt",
+            "optional": false,
+            "description": "<p>Updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "chart.publicUrl",
+            "optional": false,
+            "description": "<p>URL to a publicly visible version of the chart</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "chart.versionHash",
+            "optional": false,
+            "description": "<p>A hash to check for changes, compares updated data of related sets</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart.images",
+            "optional": false,
+            "description": "<p>A list of URLs to the chart in various image formats</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart.creator",
+            "optional": false,
+            "description": "<p>The User object that created the chart</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "field": "chart.editable",
+            "optional": false,
+            "description": "<p>Whether the chart is editable by the requestor</p>"
+          }
+        ]
+      }
+    },
+    "group": "ChartController_php",
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
+  },
+  {
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart",
+            "optional": false,
+            "description": "<p>The chart object.</p>"
+          }
+        ]
+      }
+    },
+    "group": "ChartController_php",
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
+  },
+  {
     "type": "post",
     "url": "/chart",
-    "title": "Create a new chart",
+    "title": "Create",
     "version": "1.0.0",
     "name": "CreateChart",
     "group": "Chart",
@@ -69,12 +193,25 @@
         ]
       }
     },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart",
+            "optional": false,
+            "description": "<p>The chart object.</p>"
+          }
+        ]
+      }
+    },
     "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
   },
   {
     "type": "get",
     "url": "/chart/:id",
-    "title": "Get a chart",
+    "title": "Get",
     "version": "1.0.0",
     "name": "GetChart",
     "group": "Chart",
@@ -91,12 +228,109 @@
         ]
       }
     },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart",
+            "optional": false,
+            "description": "<p>The chart object.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "chart.name",
+            "optional": false,
+            "description": "<p>The chart reference</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "field": "chart.tags",
+            "optional": false,
+            "description": "<p>Tags</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart.config",
+            "optional": false,
+            "description": "<p>Config (see Chart Config docs)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "field": "chart.isPublic",
+            "optional": false,
+            "description": "<p>Is chart in public gallery</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "field": "chart.totalViews",
+            "optional": false,
+            "description": "<p>Running total number of views</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "field": "chart.createdAt",
+            "optional": false,
+            "description": "<p>Created date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "field": "chart.updatedAt",
+            "optional": false,
+            "description": "<p>Updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "chart.publicUrl",
+            "optional": false,
+            "description": "<p>URL to a publicly visible version of the chart</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "chart.versionHash",
+            "optional": false,
+            "description": "<p>A hash to check for changes, compares updated data of related sets</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart.images",
+            "optional": false,
+            "description": "<p>A list of URLs to the chart in various image formats</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart.creator",
+            "optional": false,
+            "description": "<p>The User object that created the chart</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "field": "chart.editable",
+            "optional": false,
+            "description": "<p>Whether the chart is editable by the requestor</p>"
+          }
+        ]
+      }
+    },
     "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
   },
   {
     "type": "get",
     "url": "/chart",
-    "title": "List charts",
+    "title": "List",
     "version": "1.0.0",
     "name": "ListChart",
     "group": "Chart",
@@ -160,12 +394,39 @@
         ]
       }
     },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "field": "charts",
+            "optional": false,
+            "description": "<p>A list of matching charts</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "state",
+            "optional": false,
+            "description": "<p>List state</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "field": "state.totalRecords",
+            "optional": false,
+            "description": "<p>The total number matching charts for pagination</p>"
+          }
+        ]
+      }
+    },
     "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
   },
   {
     "type": "patch",
     "url": "/chart/:id",
-    "title": "Patch an existing chart",
+    "title": "Patch",
     "version": "1.0.0",
     "name": "PatchChart",
     "group": "Chart",
@@ -198,12 +459,25 @@
         ]
       }
     },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart",
+            "optional": false,
+            "description": "<p>The chart object.</p>"
+          }
+        ]
+      }
+    },
     "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
   },
   {
     "type": "put",
     "url": "/chart/:id",
-    "title": "Update an existing chart",
+    "title": "Update",
     "version": "1.0.0",
     "name": "UpdateChart",
     "group": "Chart",
@@ -231,6 +505,19 @@
             "field": "config",
             "optional": false,
             "description": "<p>The chart config (see Chart Config docs)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chart",
+            "optional": false,
+            "description": "<p>The chart object.</p>"
           }
         ]
       }
