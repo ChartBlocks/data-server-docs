@@ -1,5 +1,11 @@
 {
-  "name": "ChartBlocks REST API docs",
-  "version": "1.0.0",
-  "description": "Documentation for using the ChartBlocks REST API to manage charts and data"
+    "name": "ChartBlocks REST API documentation",
+    "title": "ChartBlocks REST API doumentation",
+    "url": "https://api.chartblocks.com/v1",
+    "version": "1.0.0",
+    "description": "Documentation for using the ChartBlocks REST API to manage charts and data",
+    "header": {
+        "title": "Getting started",
+        "filename": "content/header.md"
+    }
 }

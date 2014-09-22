@@ -1,9 +1,15 @@
 {
-  "name": "ChartBlocks REST API docs",
+  "name": "ChartBlocks REST API documentation",
   "version": "1.0.0",
   "description": "Documentation for using the ChartBlocks REST API to manage charts and data",
+  "title": "ChartBlocks REST API doumentation",
+  "url": "https://api.chartblocks.com/v1",
+  "header": {
+    "title": "Getting started",
+    "content": "<h1 id=\"getting-started\">Getting started</h1>\n<h2 id=\"making-requests\">Making requests</h2>\n<p>The ChartBlocks API is hosted at <a href=\"https://api.chartblocks.com/v1/\">https://api.chartblocks.com/v1/</a>. The API is \nREST based, providing access to charts, sets, data and user information.</p>\n<p>To generate charts dynamically, please see the Image API.</p>\n<h2 id=\"sdk-s\">SDK&#39;s</h2>\n<p>To get you up and running with the API as quickly as possible we&#39;ve implemented \nan SDK for PHP (<a href=\"https://github.com/ChartBlocks/php-rest-sdk\">https://github.com/ChartBlocks/php-rest-sdk</a>). Other languages \nwill be available shortly.</p>\n<h2 id=\"authorization\">Authorization</h2>\n<p>The majority of API calls must be made as an authorized user. An ACCESS_TOKEN and\nSECRET_KEY can be generated from your ChartBlocks profile page. Together these \nare used to sign requests.</p>\n<h3 id=\"authorizing-a-request\">Authorizing a request</h3>\n<p>We&#39;d suggest using one our pre-built SDKs if you&#39;re new to development, but to\nauthenticate requests in your own clients, please read on.</p>\n<p>The signature is stored in the HTTP Authorization header, like so:</p>\n<blockquote>\n<p><strong>Authorization</strong>: ACCESS_TOKEN:SIGNATURE</p>\n</blockquote>\n<p>Your SECRET_KEY is never sent in the request, only the ACCESS_TOKEN. The \nSECRET_KEY is used to generate the SIGNATURE, using the body of your request, as \noutlined below.</p>\n<h4 id=\"generating-a-signature\">Generating a signature</h4>\n<p>This snippet of psuedo code describes how to generate a signature. It should be\npossible to implement this in your language of choice.</p>\n<pre><code class=\"lang-js\">  var key1 = sha1(body);\n  var key2 = key1 . SECRET_KEY;\n  var key3 = sha1(key2);\n  var signature = base64_encode(key3);\n</code></pre>\n<p>The <strong>body</strong> variable is your request body. For a GET request this would be your \nquery parameters in the format:</p>\n<blockquote>\n<p>param1=val&amp;param2=val</p>\n</blockquote>\n<p>For POST, PUT and PATCH requests this would be your request body, normally a\nJSON document, i.e.:</p>\n<blockquote>\n<p>{ name: &#39;My Chart&#39;, isPublic: true }</p>\n</blockquote>\n<p>The SECRET_KEY is obtained along with the ACCESS_TOKEN from the profile page\nof your ChartBlocks account.</p>\n<h2 id=\"chart-config\">Chart config</h2>\n<p>The chart config object can end up rather large, and contains enough parameters\nto warrant its own documentation page. Please reference the Chart Config\ndocumentation separately for more information on how to format your config \nobject.</p>\n"
+  },
   "generator": {
     "version": "0.7.2",
-    "time": "2014-09-18T16:26:37.635Z"
+    "time": "2014-09-22T12:29:55.936Z"
   }
 }

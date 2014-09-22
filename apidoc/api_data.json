@@ -229,6 +229,13 @@
       }
     },
     "success": {
+      "examples": [
+        {
+          "title": "Success example:",
+          "content": "HTTP/1.1 200 OK\n{\n \"chart\": {\n   \"id\": \"541fdd38c9a61d68707f9d86\",\n   \"name\": \"My chart\",\n   \"tags: [ \"example\", \"bar\" ],\n   \"config\": {\n     .. config object ..\n   },\n   \"isPublic\": true,\n   \"totalViews\": 153,\n   \"createdAt\": \"2014-09-22T09:26:32+00:00\",\n   \"updatedAt\": \"2014-09-22T09:29:57+00:00\",\n   \"publicUrl\": \"http://public.chartblocks.com/c/541fdd38c9a61d68707f9d86\",\n   \"versionHash\": \"4ee3b408\",\n   \"images\": {\n     \"png\": { \"name\": \"PNG\", \"extension\": \"png\", \"url\": \"https://img.chartblocks.com/541fdd38c9a61d68707f9d86.png\"},\n     \"pdf\": { \"name\":\"PDF\", \"extension\": \"pdf\", \"url\": \"https://img.chartblocks.com/541fdd38c9a61d68707f9d86.pdf\"},\n     \"svg\": { \"name\":\"SVG\", \"extension\": \"svg\", \"url\": \"https://img.chartblocks.com/541fdd38c9a61d68707f9d86.svg\"},\n     \"eps\": { \"name\":\"EPS\", \"extension\": \"eps\", \"url\": \"https://img.chartblocks.com/541fdd38c9a61d68707f9d86.eps\"},\n     \"ps\": { \"name\":\"PS\", \"extension\": \"ps\", \"url\": \"https://img.chartblocks.com/541fdd38c9a61d68707f9d86.ps\"}\n   },\n   \"creator\": {\n     .. user object ..\n   },\n   \"editable\": false\n }\n}\n",
+          "type": "json"
+        }
+      ],
       "fields": {
         "Success 200": [
           {
@@ -419,7 +426,14 @@
             "description": "<p>The total number matching charts for pagination</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Success example:",
+          "content": "HTTP/1.1 200 OK\n{\n \"charts\": [\n   { .. chart object .. },\n   { .. chart object .. }\n ],\n \"state\": {\n   \"totalRecords\": 2\n }\n}\n",
+          "type": "json"
+        }
+      ]
     },
     "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
   },
