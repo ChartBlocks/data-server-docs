@@ -20,6 +20,41 @@ define({ api: [
     "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
   },
   {
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "name",
+            "optional": false,
+            "description": "<p>A reference for the chart</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "field": "isPublic",
+            "defaultValue": "true",
+            "optional": true,
+            "description": "<p>Whether the chart can be viewed in the public gallery</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "field": "config",
+            "optional": false,
+            "description": "<p>The chart config (see Chart Config docs)</p>"
+          }
+        ]
+      }
+    },
+    "group": "ChartController_php",
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
+  },
+  {
     "success": {
       "fields": {
         "Success 200": [
@@ -120,41 +155,6 @@ define({ api: [
             "field": "chart.editable",
             "optional": false,
             "description": "<p>Whether the chart is editable by the requestor</p>"
-          }
-        ]
-      }
-    },
-    "group": "ChartController_php",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
-  },
-  {
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "field": "name",
-            "optional": false,
-            "description": "<p>A reference for the chart</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Boolean",
-            "field": "isPublic",
-            "defaultValue": "true",
-            "optional": true,
-            "description": "<p>Whether the chart can be viewed in the public gallery</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Object",
-            "field": "config",
-            "optional": false,
-            "description": "<p>The chart config (see Chart Config docs)</p>"
           }
         ]
       }
@@ -583,6 +583,128 @@ define({ api: [
     "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartController.php"
   },
   {
+    "type": "put",
+    "url": "/data/alter/:set-id",
+    "title": "Alter data structure",
+    "version": "1.0.0",
+    "name": "DataAlter",
+    "group": "Data",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "method",
+            "optional": false,
+            "description": "<p>The type of change <p class=\"valid values\">Valid values: <code>shiftRow</code> <code>shiftCol</code></p></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "field": "index",
+            "optional": false,
+            "description": "<p>Row/column to shift from</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "field": "Number",
+            "optional": false,
+            "description": "<p>of row/columns to shift by</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "field": "success",
+            "optional": false,
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success example:",
+          "content": "HTTP/1.1 200 OK\n{\n   \"success\": true\n}\n",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Add one row to top of set",
+        "content": "{\n \"method\": \"shiftRow\",\n \"index\": 0,\n \"amount\": 1\n}\n",
+        "type": "json"
+      },
+      {
+        "title": "Shift column 2 (B) along 2",
+        "content": "{\n \"method\": \"shiftCol\",\n \"index\": 2,\n \"amount\": 2\n}\n",
+        "type": "json"
+      }
+    ],
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/DataAlterController.php"
+  },
+  {
+    "type": "put",
+    "url": "/data/append/:set-id",
+    "title": "Append data",
+    "version": "1.0.0",
+    "name": "DataAppend",
+    "group": "Data",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "field": "data",
+            "optional": false,
+            "description": "<p>The data array to append to the bottom of the set, consists of an array of objects keyed by column ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "field": "success",
+            "optional": false,
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success example:",
+          "content": "HTTP/1.1 200 OK\n{\n   \"success\": true\n}\n",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Append one row",
+        "content": "{\n \"data\": [\n   {\n     \"1\": \"2015\",\n     \"2\": 11.5\n   }\n ]\n}\n",
+        "type": "json"
+      },
+      {
+        "title": "Append multiple rows",
+        "content": "{\n \"data\": [\n   {\n     \"1\": \"2015\",\n     \"2\": 11.5\n   },\n   {\n     \"1\": \"2016\",\n     \"2\": 18\n   }\n ]\n}\n",
+        "type": "json"
+      }
+    ],
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/DataAppendController.php"
+  },
+  {
     "type": "get",
     "url": "/data/:set-id",
     "title": "Get data",
@@ -899,6 +1021,263 @@ define({ api: [
       }
     ],
     "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/DataController.php"
+  },
+  {
+    "type": "delete",
+    "url": "/data/:set-id",
+    "title": "Truncate data",
+    "version": "1.0.0",
+    "name": "DataTruncate",
+    "group": "Data",
+    "success": {
+      "examples": [
+        {
+          "title": "Success example:",
+          "content": "HTTP/1.1 200 OK\n{\n   \"success\": true\n}\n",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/DataController.php"
+  },
+  {
+    "type": "post",
+    "url": "/set/import",
+    "title": "Import data (to new set)",
+    "version": "1.0.0",
+    "name": "ImportNew",
+    "group": "Import",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "name",
+            "optional": false,
+            "description": "<p>A reference for the set</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "sourceName",
+            "optional": false,
+            "description": "<p>The type of import <p class=\"valid values\">Valid values: <code>blank</code> <code>csv</code> <code>excel</code></p></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ObjCreateect",
+            "field": "sourceOptions",
+            "optional": true,
+            "description": "<p>Some sources have options (see Import docs) to configure the import process</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success example:",
+          "content": "HTTP/1.1 200 OK\n{\n \"set\": {\n   .. set object ..\n }\n}\n",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "set",
+            "optional": false,
+            "description": "<p>The set object.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/SetImportController.php"
+  },
+  {
+    "type": "put",
+    "url": "/set/import/:set-id",
+    "title": "Import data (to existing set)",
+    "version": "1.0.0",
+    "name": "ImportOverwrite",
+    "group": "Import",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "sourceName",
+            "optional": false,
+            "description": "<p>The type of import <p class=\"valid values\">Valid values: <code>blank</code> <code>csv</code> <code>excel</code></p></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ObjCreateect",
+            "field": "sourceOptions",
+            "optional": true,
+            "description": "<p>Some sources have options (see Import docs) to configure the import process</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "name",
+            "optional": true,
+            "description": "<p>A reference for the set</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success example:",
+          "content": "HTTP/1.1 200 OK\n{\n \"set\": {\n   .. set object ..\n }\n}\n",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "set",
+            "optional": false,
+            "description": "<p>The set object.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/SetImportController.php"
+  },
+  {
+    "type": "get",
+    "url": "/set/preview",
+    "title": "Preview start",
+    "version": "1.0.0",
+    "name": "ImportPreviewStart",
+    "group": "Import",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "sourceName",
+            "optional": false,
+            "description": "<p>The type of import <p class=\"valid values\">Valid values: <code>blank</code> <code>csv</code> <code>excel</code></p></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "field": "sourceOptions",
+            "optional": true,
+            "description": "<p>Some sources have options (see Import docs) to configure the import process</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "preview",
+            "optional": false,
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "preview.status",
+            "optional": false,
+            "description": "<p>Status of import <p class=\"valid values\">Valid values: <code>pending</code> <code>running</code> <code>complete</code> <code>error</code></p></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "preview.importTaskId",
+            "optional": false,
+            "description": "<p>Task ID for tracking status of preview</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "preview.setId",
+            "optional": false,
+            "description": "<p>Temporary set ID for preview data</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success example:",
+          "content": "HTTP/1.1 200 OK\n{\n \"preview\": {\n   \"status\": \"pending\",\n   \"importTaskId\": \"53f22fe0c9a61d1a55942613\",\n   \"setId\": \"53f3a6eec9a61de66c942613\"\n }\n}\n",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/SetPreviewController.php"
+  },
+  {
+    "type": "get",
+    "url": "/set/preview/:task-id",
+    "title": "Preview status",
+    "version": "1.0.0",
+    "name": "ImportPreviewStatus",
+    "group": "Import",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "preview",
+            "optional": false,
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "preview.status",
+            "optional": false,
+            "description": "<p>Status of import <p class=\"valid values\">Valid values: <code>pending</code> <code>running</code> <code>complete</code> <code>error</code></p></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "preview.importTaskId",
+            "optional": false,
+            "description": "<p>Task ID for tracking status of preview</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "field": "preview.setId",
+            "optional": false,
+            "description": "<p>Temporary set ID for preview data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "preview.formOptions",
+            "optional": false,
+            "description": "<p>Values to populate a form to manipulate the import (i.e. excel sheet names)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success example:",
+          "content": "HTTP/1.1 200 OK\n{\n \"preview\": {\n   \"status\": \"pending\",\n   \"importTaskId\": \"53f22fe0c9a61d1a55942613\",\n   \"setId\": \"53f3a6eec9a61de66c942613\",\n   \"formOptions\": { .. options .. }\n }\n}\n",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/SetPreviewController.php"
   },
   {
     "success": {
@@ -1569,5 +1948,130 @@ define({ api: [
       }
     },
     "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/SetController.php"
+  },
+  {
+    "type": "get",
+    "url": "/chart/template/:id",
+    "title": "Get",
+    "version": "1.0.0",
+    "name": "GetChartTemplate",
+    "group": "Template",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "chartTemplate",
+            "optional": false,
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success example:",
+          "content": "HTTP/1.1 200 OK\n{\n \"chartTemplate\": {\n   \"id\": \"542038f2279871600e8b4567\",\n   \"name\": \"My template\",\n   \"templateKey\": \"my-template\",\n   \"type\": \"bar\",\n   \"listOrder\": 50,\n   \"isPublic\": true,\n   \"config\": { .. template config .. }\n   \"createdAt\": \"2014-09-22T15:57:54+01:00\",\n   \"updatedAt\": \"2014-09-22T15:57:54+01:00\"\n }\n}\n",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartTemplateController.php"
+  },
+  {
+    "type": "get",
+    "url": "/chart/template",
+    "title": "List",
+    "version": "1.0.0",
+    "name": "ListChartTemplate",
+    "group": "Template",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "type",
+            "defaultValue": "all",
+            "optional": true,
+            "description": "<p>Return templates for particular type. <p class=\"valid values\">Valid values: <code>bar</code> <code>line</code> <code>pie</code> <code>area</code></p></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "sort_by",
+            "defaultValue": "name",
+            "optional": true,
+            "description": "<p>Sort results by given field. <p class=\"valid values\">Valid values: <code>updatedAt</code> <code>createdAt</code> <code>name</code> <code>order</code></p></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "order",
+            "defaultValue": "asc",
+            "optional": true,
+            "description": "<p>Order of results <p class=\"valid values\">Valid values: <code>asc</code> <code>desc</code></p></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "field": "limit",
+            "defaultValue": "50",
+            "optional": true,
+            "description": "<p>Maximum number of results to return per request</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "field": "page",
+            "defaultValue": "1",
+            "optional": true,
+            "description": "<p>Which page of results to return (coupled with limit for pagination)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "term",
+            "optional": true,
+            "description": "<p>Search query</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "field": "chartTemplates",
+            "optional": false,
+            "description": "<p>A list of matching templates</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "field": "state",
+            "optional": false,
+            "description": "<p>List state</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "field": "state.totalRecords",
+            "optional": false,
+            "description": "<p>The total number of matching templates for pagination</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success example:",
+          "content": "HTTP/1.1 200 OK\n{\n \"chartTemplates\": [\n   { .. template object .. },\n   { .. template object .. }\n ],\n \"state\": {\n   \"totalRecords\": 2\n }\n}\n",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "vendor/chartblocks/data-server/module/DataServerModule/src/DataServerModule/Controller/ChartTemplateController.php"
   }
 ] });
