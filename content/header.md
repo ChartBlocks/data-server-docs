@@ -28,12 +28,12 @@ are used to sign requests.
 We'd suggest using one our pre-built SDKs if you're new to development, but to
 authenticate requests in your own clients, please read on.
 
-The signature is stored in the HTTP Authorization header, like so:
-> **Authorization**: ACCESS_TOKEN:SIGNATURE
-
 Your SECRET_KEY is never sent in the request, only the ACCESS_TOKEN. The 
-SECRET_KEY is used to generate the SIGNATURE, using the body of your request, as 
-outlined below.
+SECRET_KEY is used to generate a SIGNATURE which both authenticates the request
+as coming from you, and mitigates man in the middle attacks.
+
+The signature is sent in your HTTP request using the **Authorization** header in the format:
+> "**Authorization**: BASIC `ACCESS_TOKEN`:`SIGNATURE`"
 
 #### Generating a signature
 
@@ -59,6 +59,17 @@ JSON document, i.e.:
 
 The SECRET_KEY is obtained along with the ACCESS_TOKEN from the profile page
 of your ChartBlocks account.
+
+
+### Item tokens
+
+Charts and datasets can are assigned a token, allowing people without a 
+ChartBlocks account to view *private* items providing they know the token.
+
+To request a chart or set with a token, pass the given token as a GET
+parameter of **t**, i.e.
+
+> `https://api.chartblocks.com/v1/chart/541fdd38c9a61d68707f9d86?t=c9ea94ad`
 
 
 Chart config
