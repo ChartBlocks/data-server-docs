@@ -33,7 +33,7 @@ try {
     $groupedData = groupData($latestData);
     $outData = $groupedData;
 
-    $outJson = json_encode($outData, JSON_PRETTY_PRINT);
+    $outJson = json_encode($outData, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);
 
     fwrite($targetHandle, $outJson);
     fclose($targetHandle);
@@ -94,5 +94,5 @@ function groupData($data) {
         $groups[$key]['methods'][] = $object;
     }
 
-    return array('groups' => $groups);
+    return array('groups' => array_values($groups));
 }
