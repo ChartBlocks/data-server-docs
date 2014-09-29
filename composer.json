@@ -4,7 +4,8 @@
     "homepage": "http://www.chartblocks.com",
     "license": "proprietary",
     "require": {
-        "chartblocks/data-server": "dev-develop"
+        "chartblocks/data-server": "dev-develop",
+        "symfony/console": "~2.5."
     },
     "minimum-stability": "dev",
     "repositories": [

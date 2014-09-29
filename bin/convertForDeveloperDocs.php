@@ -21,8 +21,8 @@ try {
 
     $targetStream = ($dataTarget === null) ? 'php://stdout' : 'file://' . $dataTarget;
     $targetHandle = fopen($targetStream, 'r+');
-    
-    if($targetHandle === false){
+
+    if ($targetHandle === false) {
         throw new RuntimeException("Could not write to '$targetStream'");
     }
 
@@ -30,11 +30,14 @@ try {
 
     $version = findLatestVersion($data);
     $latestData = extractVersionData($data, $version);
-    $outJson = json_encode($latestData, JSON_PRETTY_PRINT);
-    
+    $groupedData = groupData($latestData);
+    $outData = $groupedData;
+
+    $outJson = json_encode($outData, JSON_PRETTY_PRINT);
+
     fwrite($targetHandle, $outJson);
     fclose($targetHandle);
-    
+
     echo PHP_EOL;
 } catch (Exception $e) {
     echo $e;
@@ -78,4 +81,18 @@ function extractVersionData($data, $version) {
     }
 
     return $thisVersion;
+}
+
+function groupData($data) {
+    $groups = array();
+
+    foreach ($data as $object) {
+        $key = strtolower($object->group);
+
+        $groups[$key]['key'] = $key;
+        $groups[$key]['title'] = $object->group;
+        $groups[$key]['methods'][] = $object;
+    }
+
+    return array('groups' => $groups);
 }
