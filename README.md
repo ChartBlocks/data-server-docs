@@ -20,3 +20,8 @@ Push docs to github pages
 -------------------------
 
 `git subtree push --prefix apidoc origin gh-pages`
+
+Generate developer doc copy of api_data.json
+--------------------------------------------
+
+`php bin/convertForDeveloperDocs.php --data-target="/path/to/developer-docs/_data/rest/apidoc.json"`
