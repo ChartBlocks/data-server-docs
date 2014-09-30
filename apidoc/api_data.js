@@ -43,7 +43,7 @@ define({ api: [
             "type": "Object",
             "field": "config",
             "optional": false,
-            "description": "<p>The chart config (see Chart Config docs)</p>"
+            "description": "<p>The chart config (see <a href=\"/chart-config\">Chart Config</a> docs)</p>"
           }
         ]
       }
@@ -91,7 +91,7 @@ define({ api: [
             "type": "Object",
             "field": "chart.config",
             "optional": false,
-            "description": "<p>Config (see Chart Config docs)</p>"
+            "description": "<p>Config (see <a href=\"/chart-config\">Chart Config</a> docs)</p>"
           },
           {
             "group": "Success 200",
@@ -215,7 +215,7 @@ define({ api: [
             "type": "Object",
             "field": "config",
             "optional": false,
-            "description": "<p>The chart config (see Chart Config docs)</p>"
+            "description": "<p>The chart config (see <a href=\"/chart-config\">Chart Config</a> docs)</p>"
           }
         ]
       }
@@ -294,7 +294,7 @@ define({ api: [
             "type": "Object",
             "field": "chart.config",
             "optional": false,
-            "description": "<p>Config (see Chart Config docs)</p>"
+            "description": "<p>Config (see <a href=\"/chart-config\">Chart Config</a> docs)</p>"
           },
           {
             "group": "Success 200",
@@ -518,7 +518,7 @@ define({ api: [
             "type": "Object",
             "field": "config",
             "optional": false,
-            "description": "<p>The chart config (see Chart Config docs)</p>"
+            "description": "<p>The chart config (see <a href=\"/chart-config\">Chart Config</a> docs)</p>"
           }
         ]
       }
@@ -575,7 +575,7 @@ define({ api: [
             "type": "Object",
             "field": "config",
             "optional": false,
-            "description": "<p>The chart config (see Chart Config docs)</p>"
+            "description": "<p>The chart config (see <a href=\"/chart-config\">Chart Config</a> docs)</p>"
           }
         ]
       }
