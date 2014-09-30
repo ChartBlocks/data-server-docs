@@ -91,7 +91,11 @@ function groupData($data) {
 
         $groups[$key]['key'] = $key;
         $groups[$key]['title'] = $object->group;
-        $groups[$key]['methods'][] = $object;
+        $groups[$key]['methods'][$object->name] = $object;
+    }
+    
+    foreach($groups as $key => $group){
+        $groups[$key]['methods'] = array_values($group['methods']);
     }
 
     return array('groups' => array_values($groups));
