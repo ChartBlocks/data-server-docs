@@ -33,7 +33,7 @@ try {
     $groupedData = groupData($latestData);
     $outData = $groupedData;
 
-    $outJson = json_encode($outData, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);
+    $outJson = json_encode($outData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
     fwrite($targetHandle, $outJson);
     fclose($targetHandle);
@@ -91,10 +91,15 @@ function groupData($data) {
 
         $groups[$key]['key'] = $key;
         $groups[$key]['title'] = $object->group;
+
+        if (isset($object->groupDescription)) {
+            $groups[$key]['description'] = $object->groupDescription;
+        }
+
         $groups[$key]['methods'][$object->name] = $object;
     }
-    
-    foreach($groups as $key => $group){
+
+    foreach ($groups as $key => $group) {
         $groups[$key]['methods'] = array_values($group['methods']);
     }
 

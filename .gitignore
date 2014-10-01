@@ -33,3 +33,4 @@ node_modules
 
 # Netbeans 
 /nbproject
+/_site/nbproject/private/
